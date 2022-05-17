@@ -150,6 +150,30 @@ public class Video extends ServicioBD{
 		super.eliminarRegistro(nombreBaseDatos, tabla, identificador);
 	}
 
+	
+	@Override
+	public String toString() {
+		
+	
+		String titleAux;
+		String directorAux;
+		
+		if(!this.title.equals("")) {
+			titleAux = "'" + this.title + "'";
+		}else {
+			titleAux = null;
+		}
+		
+		if(!this.director.equals("")) {
+			directorAux = "'" + this.director + "'";
+		}else {
+			directorAux = null;
+		}
+		
+	
+		
+		return "(default ," + id + ", " + titleAux + ", " + directorAux + ", " + cliente.getId() + ")";
+	}
 		
 	
 }
