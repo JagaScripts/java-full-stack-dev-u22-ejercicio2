@@ -3,6 +3,8 @@
  */
 package com.team2.u22.ejercicio2.modelo.gestiondb;
 
+import java.sql.SQLException;
+
 /**
  * java-full-stack-dev-u18 - modelo.gestiondb - IObjetoAccesoDatos
  *
@@ -17,7 +19,7 @@ package com.team2.u22.ejercicio2.modelo.gestiondb;
 public interface IObjetoAccesoDatos {
 	
 	
-	void usarBaseDatos(String nombreBaseDatos);
+	void usarBaseDatos(String nombreBaseDatos) throws SQLException;
 	
 
 	/**
@@ -25,7 +27,7 @@ public interface IObjetoAccesoDatos {
 	 *
 	 * @param elemento Elemento con los datos que se desean insertar
 	 */
-	void crearRegistro(String nombreBaseDatos, String tabla, String registro);
+	void crearRegistro(String nombreBaseDatos, String tabla, String registro) throws SQLException;
 	
 
 
@@ -34,7 +36,7 @@ public interface IObjetoAccesoDatos {
      *
      * @param elemento Elemento con los datos que se desean actualizar.
      */
-	void actualizarRegistro(String nombreBaseDatos, String tabla, String atributo, String identificado);
+	void actualizarRegistro(String nombreBaseDatos, String tabla, String atributo, String identificado) throws SQLException;
 
     
     
@@ -43,14 +45,14 @@ public interface IObjetoAccesoDatos {
      *
      * @param id String valor del filtro.
      */
-    void eliminarRegistro(String nombreBaseDatos, String tabla, String identificador);
+    void eliminarRegistro(String nombreBaseDatos, String tabla, String identificador) throws SQLException;
 
     /**
      * Función para leer registros de la base de datos.
      *
      * @return List con los objetos cargados.*/
     
-    String leerTablaBaseDatos(String nombreBaseDatos, String tabla, int numeroAtributos); 
+    String leerTablaBaseDatos(String nombreBaseDatos, String tabla, int numeroAtributos) throws SQLException; 
   
 
 }

@@ -37,44 +37,32 @@ public class ServicioBD implements IObjetoAccesoDatos{
 	}
 
 	@Override
-	public void usarBaseDatos(String nombreBaseDatos) {
+	public void usarBaseDatos(String nombreBaseDatos) throws SQLException{
 	
 		String queryDb = "USE " + nombreBaseDatos + ";";
 
-		
-		try {
+		Statement statement = this.getConexion().createStatement();
+		statement.executeUpdate(queryDb);
 			
-			Statement statement = this.getConexion().createStatement();
-			statement.executeUpdate(queryDb);
-			
-		} catch (SQLException e) {
-			System.out.println("No se ha podido usar la base de datos " + nombreBaseDatos);
-			e.printStackTrace();
-		}
 		
 	}
 
 	
 	
 	@Override
-	public void crearRegistro(String nombreBaseDatos, String tabla, String registros) {
+	public void crearRegistro(String nombreBaseDatos, String tabla, String registros) throws SQLException{
 		
-		try {
-			// Database use statement
-			String consultaCrearRegistros = "INSERT INTO " + tabla + " VALUES " + registros + ";";
-			this.ejecutarConsulta(consultaCrearRegistros, nombreBaseDatos);
 
-		} catch (Exception e) {
-			System.out.println("No se ha podido crear registros la Base de datos " + nombreBaseDatos);
-			e.printStackTrace();
-		}
+		// Database use statement
+		String consultaCrearRegistros = "INSERT INTO " + tabla + " VALUES " + registros + ";";
+		this.ejecutarConsulta(consultaCrearRegistros, nombreBaseDatos);
 		
 	}
 
 	@Override
-	public String leerTablaBaseDatos(String nombreBaseDatos, String tabla, int numeroAtributos) {
+	public String leerTablaBaseDatos(String nombreBaseDatos, String tabla, int numeroAtributos) throws SQLException{
 		String resultadoConsulta = "";
-		try {
+
 			// Database use statement SELECT * FROM
 
 			this.usarBaseDatos(nombreBaseDatos);
@@ -97,41 +85,28 @@ public class ServicioBD implements IObjetoAccesoDatos{
 				
 			}
 
-		} catch (Exception e) {
-			System.out.println("No se ha podido leer la Tabla " + tabla + " de la Base de datos " + nombreBaseDatos);
-			e.printStackTrace();
-		}
+	
 		return resultadoConsulta;
 		
 	}
 
 	@Override
-	public void actualizarRegistro(String nombreBaseDatos, String tabla, String atributo, String identificador) {
-		try {
+	public void actualizarRegistro(String nombreBaseDatos, String tabla, String atributo, String identificador) throws SQLException{
+
 			// Database use statement
 			String consultaActualizarRegistros = "UPDATE " + tabla + " SET " + atributo + " WHERE " + identificador + " ;";
 		
 			this.ejecutarConsulta(consultaActualizarRegistros, nombreBaseDatos);
 
-		} catch (Exception e) {
-			System.out.println("No se ha podido crear registros la Base de datos " + nombreBaseDatos);
-			e.printStackTrace();
-		}
-		
 	}
 	
 	@Override
-	public void eliminarRegistro(String nombreBaseDatos, String tabla, String identificador) {
+	public void eliminarRegistro(String nombreBaseDatos, String tabla, String identificador) throws SQLException {
 		
-		try {
 			// Database use statement
 			String consultaEliminarRegistros = "DELETE FROM " + tabla + " WHERE " + identificador + " ;";
 			this.ejecutarConsulta(consultaEliminarRegistros, nombreBaseDatos);
 
-		} catch (Exception e) {
-			System.out.println("No se ha podido crear registros la Base de datos " + nombreBaseDatos);
-			e.printStackTrace();
-		}
 		
 		
 	}

@@ -3,7 +3,9 @@ package com.team2.u22.ejercicio2;
 import java.awt.EventQueue;
 
 import com.team2.u22.ejercicio2.controlador.ClienteControler;
+import com.team2.u22.ejercicio2.controlador.VideoControler;
 import com.team2.u22.ejercicio2.modelo.Cliente;
+import com.team2.u22.ejercicio2.modelo.Video;
 import com.team2.u22.ejercicio2.vista.Vista;
 
 /**
@@ -27,7 +29,9 @@ public class App
 					Vista frame = new Vista();
 					frame.setVisible(true);
 					Cliente cliente = new Cliente();
+					Video video = new Video();
 					ClienteControler cc = new ClienteControler(cliente, frame);
+					VideoControler vc = new VideoControler(video, frame);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

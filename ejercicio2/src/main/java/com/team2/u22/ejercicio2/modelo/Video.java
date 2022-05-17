@@ -3,6 +3,8 @@
  */
 package com.team2.u22.ejercicio2.modelo;
 
+import java.sql.SQLException;
+
 import com.team2.u22.ejercicio2.modelo.gestiondb.ServicioBD;
 
 /**
@@ -117,34 +119,34 @@ public class Video extends ServicioBD{
 
 
 	@Override
-	public void usarBaseDatos(String nombreBaseDatos) {
+	public void usarBaseDatos(String nombreBaseDatos) throws SQLException{
 		nombreBaseDatos = "ud22_ejercicios_db_clientes";
 		super.usarBaseDatos(nombreBaseDatos);
 	}
 
 	@Override
-	public void crearRegistro(String nombreBaseDatos, String tabla, String registros) {
+	public void crearRegistro(String nombreBaseDatos, String tabla, String registros) throws SQLException{
 		nombreBaseDatos = "ud22_ejercicios_db_clientes";
 		tabla = "videos";
 		super.crearRegistro(nombreBaseDatos, tabla, registros);
 	}
 
 	@Override
-	public String leerTablaBaseDatos(String nombreBaseDatos, String tabla, int numeroAtributos) {
+	public String leerTablaBaseDatos(String nombreBaseDatos, String tabla, int numeroAtributos) throws SQLException{
 		nombreBaseDatos = "ud22_ejercicios_db_clientes";
 		tabla = "videos";
 		return super.leerTablaBaseDatos(nombreBaseDatos, tabla, numeroAtributos);
 	}
 
 	@Override
-	public void actualizarRegistro(String nombreBaseDatos, String tabla, String atributo, String identificador) {
+	public void actualizarRegistro(String nombreBaseDatos, String tabla, String atributo, String identificador) throws SQLException{
 		nombreBaseDatos = "ud22_ejercicios_db_clientes";
 		tabla = "videos";
 		super.actualizarRegistro(nombreBaseDatos, tabla, atributo, identificador);
 	}
 
 	@Override
-	public void eliminarRegistro(String nombreBaseDatos, String tabla, String identificador) {
+	public void eliminarRegistro(String nombreBaseDatos, String tabla, String identificador) throws SQLException{
 		nombreBaseDatos = "ud22_ejercicios_db_clientes";
 		tabla = "videos";
 		super.eliminarRegistro(nombreBaseDatos, tabla, identificador);
