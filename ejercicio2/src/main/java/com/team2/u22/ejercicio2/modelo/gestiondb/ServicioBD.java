@@ -20,20 +20,25 @@ import java.sql.Statement;
  */
 public class ServicioBD implements IObjetoAccesoDatos{
 	
-	private Connection conexion;
+	 private static Connection conexion;
 	
 	/**
 	 * 
 	 */
 	public ServicioBD() {
-		this.setConexion(GestionSql.abrirConexion());
+		 if (ServicioBD.conexion == null) {
+			 this.setConexion(GestionSql.abrirConexion());
+	        }
+		
 	}
 
 	/**
 	 * @param conexion
 	 */
 	public ServicioBD(Connection conexion) {
-		this.setConexion(conexion);
+		if (ServicioBD.conexion == null) {
+			 this.setConexion(conexion);
+	        }
 	}
 
 	@Override
@@ -124,6 +129,9 @@ public class ServicioBD implements IObjetoAccesoDatos{
 	 * @return the conexion
 	 */
 	public Connection getConexion() {
+		 if (ServicioBD.conexion == null) {
+			 this.setConexion(GestionSql.abrirConexion());
+	        }
 		return conexion;
 	}
 
@@ -131,7 +139,7 @@ public class ServicioBD implements IObjetoAccesoDatos{
 	 * @param conexion the conexion to set
 	 */
 	public void setConexion(Connection conexion) {
-		this.conexion = conexion;
+		ServicioBD.conexion = conexion;
 	}
 
 	public boolean cerrarConexion() {

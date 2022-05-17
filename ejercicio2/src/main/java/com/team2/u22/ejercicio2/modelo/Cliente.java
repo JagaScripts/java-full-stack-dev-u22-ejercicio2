@@ -3,8 +3,9 @@
  */
 package com.team2.u22.ejercicio2.modelo;
 
-import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.team2.u22.ejercicio2.modelo.gestiondb.ServicioBD;
 
@@ -83,13 +84,13 @@ public class Cliente extends ServicioBD{
 	/**
 	 * @return the dirección
 	 */
-	public String getDirección() {
+	public String getDireccion() {
 		return direccion;
 	}
 	/**
 	 * @param dirección the dirección to set
 	 */
-	public void setDirección(String dirección) {
+	public void setDireccion(String dirección) {
 		this.direccion = dirección;
 	}
 	/**
@@ -130,18 +131,45 @@ public class Cliente extends ServicioBD{
 	@Override
 	public String leerTablaBaseDatos(String nombreBaseDatos, String tabla, int numeroAtributos) throws SQLException{
 		nombreBaseDatos = "ud22_ejercicios_db_clientes";
-		
+		tabla = "cliente";
 		return super.leerTablaBaseDatos(nombreBaseDatos, tabla, numeroAtributos);
 	}
 	@Override
 	public void actualizarRegistro(String nombreBaseDatos, String tabla, String atributo, String identificador) throws SQLException{
 		nombreBaseDatos = "ud22_ejercicios_db_clientes";
+		tabla = "cliente";
 		super.actualizarRegistro(nombreBaseDatos, tabla, atributo, identificador);
 	}
 	@Override
 	public void eliminarRegistro(String nombreBaseDatos, String tabla, String identificador) throws SQLException{
 		nombreBaseDatos = "ud22_ejercicios_db_clientes";
+		tabla = "cliente";
 		super.eliminarRegistro(nombreBaseDatos, tabla, identificador);
+	}
+	
+	public boolean comprobarId(String id) throws SQLException {
+		String resultadoConsulta = "";
+
+		// Database use statement SELECT * FROM
+
+		super.usarBaseDatos("ud22_ejercicios_db_clientes");
+
+		Statement statement = super.getConexion().createStatement();
+		String consultaSeleccionarRegistros = "SELECT * FROM cliente WHERE id = " + id + ";";
+		// PreparedStatement ps = conexion.prepareStatement(querySelect);
+		ResultSet resultado = statement.executeQuery(consultaSeleccionarRegistros);
+
+		if (resultado.next()) {
+			this.setId(resultado.getInt("id"));
+			this.setNombre(resultado.getString("nombre"));
+			this.setApellido(resultado.getString("apellido"));
+			this.setDireccion(resultado.getString("direccion"));
+			this.setDni(resultado.getInt("dni"));
+			this.setFecha(resultado.getString("fecha"));
+			return true;
+		}
+
+		return false;
 	}
 	
 	@Override

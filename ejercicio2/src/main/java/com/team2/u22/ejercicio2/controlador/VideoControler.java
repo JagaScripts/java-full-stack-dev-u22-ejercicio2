@@ -71,17 +71,27 @@ public class VideoControler implements ActionListener {
 				if (!"".equals(this.vista.txtCliente_id.getText())) {
 					id_Cliente = Integer.parseInt(this.vista.txtCliente_id.getText());
 					cliente = new Cliente();
+					if (cliente.comprobarId(String.valueOf(id_Cliente))) {
+						video.setCliente(cliente);
+					}else {
+						
+						JOptionPane.showMessageDialog(null, "El cliente no existe");
+						
+					}
 				}
 
 				video.crearRegistro("ud22_ejercicios_db_clientes", "videos", video.toString());
+				vista.txtCliente_id.setText("");
+				vista.txtDirector.setText("");
+				vista.txtTítulo.setText("");
 
-				System.out.println(video);
-				System.out.println(video);
 
-			} catch (Exception e2) {
+			} catch (Exception ex) {
 
-				JOptionPane.showMessageDialog(null, e2.getMessage());
-			}
+				JOptionPane.showMessageDialog(null, ex.getMessage());
+				
+				
+			} 
 			// Boton Filtrar usuarios
 		} else if (this.vista.botonFU_1 == e.getSource()) {
 
@@ -97,20 +107,45 @@ public class VideoControler implements ActionListener {
 
 			try {
 				if (!"".equals(vista.txtTituloA.getText())) {
-					String actualizarVideo = "nombre = '" + vista.txtTituloA.getText() + "'";
+					String actualizarVideo = "title = '" + vista.txtTituloA.getText() + "'";
 					video.actualizarRegistro("ud22_ejercicios_db_clientes", "videos", actualizarVideo,
-							"id = " + vista.txtIdVideoA.getText());
+							"id = " + vista.txtIdVideoA.getText());					
+					
 				}
 
 				if (!"".equals(vista.txtDirectorA.getText())) {
-					String actualizarDirector = "apellido = '" + vista.txtDirectorA.getText() + "'";
+					String actualizarDirector = "director = '" + vista.txtDirectorA.getText() + "'";
 					video.actualizarRegistro("ud22_ejercicios_db_clientes", "videos", actualizarDirector,
 							"id = " + vista.txtIdVideoA.getText());
+					
 				}
+				
+				if (!"".equals(this.vista.txtCliente_idA.getText())) {
+					id_Cliente = Integer.parseInt(this.vista.txtCliente_idA.getText());
+					cliente = new Cliente();
+					if (cliente.comprobarId(String.valueOf(id_Cliente))) {
+						String actualizarIdCliente = "cli_id = '" + id_Cliente + "'";
+						video.actualizarRegistro("ud22_ejercicios_db_clientes", "videos", actualizarIdCliente,
+								"id = " + vista.txtIdVideoA.getText());
+						
+					}else {
+						
+						JOptionPane.showMessageDialog(null, "El cliente no existe");
+						
+					}
+				}
+				
+				vista.txtTituloA.setText("");
+				vista.txtDirectorA.setText("");
+				vista.txtCliente_idA.setText("");
+				vista.txtIdVideoA.setText("");
+				
+				
 
 			} catch (Exception ex) {
 
 				JOptionPane.showMessageDialog(null, ex.getMessage());
+				
 
 			}
 

@@ -48,8 +48,6 @@ public class Vista extends JFrame {
 	public JButton botonAU_1;
 	public JButton botonFU_1;
 	public JButton botonBU_1;
-	
-	public JTextField txtIdVideo;
 	public JTextField txtTítulo;
 	public JTextField txtDirector;
 	public JTextField txtCliente_id;
@@ -252,15 +250,6 @@ public class Vista extends JFrame {
 		panelCrear_1.setLayout(null);
 		panelCrear_1.setBounds(8, 450, 352, 205);
 		contentPane.add(panelCrear_1);
-		
-		JLabel lblNewLabel_1_2 = new JLabel("Id:");
-		lblNewLabel_1_2.setBounds(10, 55, 61, 14);
-		panelCrear_1.add(lblNewLabel_1_2);
-		
-		txtIdVideo = new JTextField();
-		txtIdVideo.setColumns(10);
-		txtIdVideo.setBounds(65, 52, 122, 20);
-		panelCrear_1.add(txtIdVideo);
 		
 		JLabel lblNewLabel_2_2 = new JLabel("Titulo:");
 		lblNewLabel_2_2.setBounds(10, 83, 56, 14);

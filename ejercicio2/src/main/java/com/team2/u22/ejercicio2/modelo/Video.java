@@ -174,7 +174,7 @@ public class Video extends ServicioBD{
 		
 	
 		
-		return "(default ," + id + ", " + titleAux + ", " + directorAux + ", " + cliente.getId() + ")";
+		return "(default ," + titleAux + ", " + directorAux + ", " + cliente.getId() + ")";
 	}
 		
 	
