@@ -40,6 +40,9 @@ public class Cliente extends ServicioBD{
 		this.dni = dni;
 		this.fecha = fecha;
 	}
+	public Cliente() {
+		
+	}
 	/**
 	 * @return the id
 	 */
