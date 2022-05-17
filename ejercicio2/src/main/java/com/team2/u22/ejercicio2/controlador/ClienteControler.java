@@ -3,6 +3,7 @@ package com.team2.u22.ejercicio2.controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 import javax.swing.JOptionPane;
@@ -95,7 +96,12 @@ public class ClienteControler implements ActionListener {
 			// Boton Filtrar usuarios
 		} else if (this.vista.botonFU == e.getSource()) {
 
-			vista.textArea.setText(cliente.leerTablaBaseDatos("ud22_ejercicios_db_clientes", "cliente", 6));
+			try {
+				vista.textArea.setText(cliente.leerTablaBaseDatos("ud22_ejercicios_db_clientes", "cliente", 6));
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 			// Actualizar Usuario
 		} else if (this.vista.botonAU == e.getSource()) {
@@ -144,7 +150,12 @@ public class ClienteControler implements ActionListener {
 			// Borrar Usuario
 		} else if (this.vista.botonBU == e.getSource()) {
 
-			cliente.eliminarRegistro("ud22_ejercicios_db_clientes", "cliente", "id = " + vista.idBUTextField.getText());
+			try {
+				cliente.eliminarRegistro("ud22_ejercicios_db_clientes", "cliente", "id = " + vista.idBUTextField.getText());
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 		}
 

@@ -43,20 +43,22 @@ public class Vista extends JFrame {
 	public JButton botonAU;
 	public JButton botonFU;
 	public JButton botonBU;
+	
 	public JButton botonCU_1;
 	public JButton botonAU_1;
 	public JButton botonFU_1;
 	public JButton botonBU_1;
+	
 	public JTextField txtIdVideo;
 	public JTextField txtTítulo;
 	public JTextField txtDirector;
 	public JTextField txtCliente_id;
 	public JTextField txtIdVideoA;
-	public JTextField textField_6;
+	public JTextField txtTituloA;
 	public JTextField txtDirectorA;
 	public JTextField txtCliente_idA;
-	public JTextField txtIdVideoB;
-
+	public JTextField txtIdVideoB; 
+	public JTextArea textAreaVideos;
 	/**
 	 * Create the frame.
 	 */
@@ -287,7 +289,7 @@ public class Vista extends JFrame {
 		txtCliente_id.setBounds(75, 105, 86, 20);
 		panelCrear_1.add(txtCliente_id);
 		
-		JButton botonCU_1 = new JButton("Enviar");
+		botonCU_1 = new JButton("Enviar");
 		botonCU_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -305,7 +307,7 @@ public class Vista extends JFrame {
 		panelLeer_1.setBounds(390, 450, 352, 205);
 		contentPane.add(panelLeer_1);
 		
-		JTextArea textAreaVideos = new JTextArea();
+		textAreaVideos = new JTextArea();
 		textAreaVideos.setBounds(10, 41, 332, 124);
 		panelLeer_1.add(textAreaVideos);
 		
@@ -314,7 +316,7 @@ public class Vista extends JFrame {
 		lblNewLabel_6_1_1.setBounds(33, 9, 117, 21);
 		panelLeer_1.add(lblNewLabel_6_1_1);
 		
-		JButton botonFU_1 = new JButton("Filtrar");
+		botonFU_1 = new JButton("Filtrar");
 		botonFU_1.setBounds(143, 171, 89, 23);
 		panelLeer_1.add(botonFU_1);
 		
@@ -336,10 +338,10 @@ public class Vista extends JFrame {
 		lblNewLabel_2_1_1.setBounds(170, 46, 56, 14);
 		panelActualizar_1.add(lblNewLabel_2_1_1);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(230, 43, 86, 20);
-		panelActualizar_1.add(textField_6);
+		txtTituloA = new JTextField();
+		txtTituloA.setColumns(10);
+		txtTituloA.setBounds(230, 43, 86, 20);
+		panelActualizar_1.add(txtTituloA);
 		
 		JLabel lblNewLabel_3_1_1 = new JLabel("Director:");
 		lblNewLabel_3_1_1.setBounds(10, 71, 61, 14);
@@ -359,7 +361,7 @@ public class Vista extends JFrame {
 		txtCliente_idA.setBounds(230, 68, 86, 20);
 		panelActualizar_1.add(txtCliente_idA);
 		
-		JButton botonAU_1 = new JButton("Actualizar");
+		botonAU_1 = new JButton("Actualizar");
 		botonAU_1.setBounds(137, 151, 101, 23);
 		panelActualizar_1.add(botonAU_1);
 		
@@ -387,7 +389,7 @@ public class Vista extends JFrame {
 		txtIdVideoB.setBounds(34, 43, 54, 20);
 		panelBorrar_1.add(txtIdVideoB);
 		
-		JButton botonBU_1 = new JButton("Borrar");
+		botonBU_1 = new JButton("Borrar");
 		botonBU_1.setBounds(133, 144, 89, 23);
 		panelBorrar_1.add(botonBU_1);
 	}
